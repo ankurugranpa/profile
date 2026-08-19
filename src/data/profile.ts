@@ -1,7 +1,10 @@
 import type { Profile } from '@/types/profile'
 
+const emailAddress = 'ankuru.ahahahaha@gmail.com'
+
 /**
  * ページに表示する内容は、このファイルだけで変更できます。
+ * コピーするメールアドレスはemailAddressを変更してください。
  */
 export const profile = {
   name: '鳥元 湧輝',
@@ -15,19 +18,22 @@ export const profile = {
       platform: 'facebook',
       label: 'Facebook',
       description: '連絡付きやすいです',
-      href: 'https://www.facebook.com/profile.php?id=61592834570936',
+      action: {
+        type: 'link',
+        href: 'https://www.facebook.com/profile.php?id=61592834570936',
+      },
     },
     {
       platform: 'gmail',
       label: 'Gmail',
-      description: '連絡付きやすいです',
-      href: 'ankuru.ahahahaha@gmail.com',
+      description: emailAddress,
+      action: { type: 'copy', value: emailAddress },
     },
     {
       platform: 'x',
       label: 'X',
       description: '気が付きにくいです',
-      href: 'https://x.com/ankuru_dev',
+      action: { type: 'link', href: 'https://x.com/ankuru_dev' },
     },
   ],
 } as const satisfies Profile

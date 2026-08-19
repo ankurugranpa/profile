@@ -2,12 +2,17 @@ export const socialPlatforms = ['facebook', 'x', 'gmail'] as const
 
 export type SocialPlatform = (typeof socialPlatforms)[number]
 
-export type SocialLink = {
+type SocialLinkBase = {
   platform: SocialPlatform
   label: string
   description: string
-  href: string
 }
+
+export type SocialLink = SocialLinkBase &
+  (
+    | { action: { type: 'link'; href: string } }
+    | { action: { type: 'copy'; value: string } }
+  )
 
 export type Profile = {
   name: string
