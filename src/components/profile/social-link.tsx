@@ -8,7 +8,7 @@ import {
 } from 'react'
 import { Check, ChevronRight, Copy, Mail } from 'lucide-react'
 
-import { FacebookIcon, XIcon } from '@/components/icons/brand-icons'
+import { FacebookIcon, GitHubIcon, XIcon } from '@/components/icons/brand-icons'
 import { cn } from '@/lib/utils'
 import type { SocialLink as SocialLinkType, SocialPlatform } from '@/types/profile'
 
@@ -26,6 +26,10 @@ const platformStyles = {
   facebook: {
     icon: FacebookIcon,
     iconClassName: 'bg-[#1877f2] text-white',
+  },
+  github: {
+    icon: GitHubIcon,
+    iconClassName: 'bg-stone-800 text-white',
   },
   x: {
     icon: XIcon,

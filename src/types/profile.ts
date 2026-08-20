@@ -1,4 +1,4 @@
-export const socialPlatforms = ['facebook', 'x', 'gmail'] as const
+export const socialPlatforms = ['facebook', 'github', 'x', 'gmail'] as const
 
 export type SocialPlatform = (typeof socialPlatforms)[number]
 
@@ -16,8 +16,10 @@ export type SocialLink = SocialLinkBase &
 
 export type Profile = {
   name: string
+  penName: string
   initials: string
   imageUrl?: string
+  alternateImageUrl?: string
   greeting: string
   description: string
   isAvailable: boolean

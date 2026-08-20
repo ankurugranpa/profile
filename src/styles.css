@@ -18,6 +18,13 @@
     from { opacity: 0; scale: .85; }
     to { opacity: 1; scale: 1; }
   }
+
+  @keyframes avatar-peek {
+    0%, 68%, 82%, 100% { transform: translateY(0); }
+    72% { transform: translateY(-.3rem); }
+    76% { transform: translateY(-.1rem); }
+    79% { transform: translateY(-.22rem); }
+  }
 }
 
 @layer base {

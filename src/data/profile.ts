@@ -8,8 +8,10 @@ const emailAddress = 'ankuru.ahahahaha@gmail.com'
  */
 export const profile = {
   name: '鳥元 湧輝',
+  penName: 'ankuru',
   initials: 'YN',
-  imageUrl: '/icon.png',
+  imageUrl: '/my-face.png',
+  alternateImageUrl: '/icon.png',
   greeting: 'こんにちは！',
   description: 'お気軽にDMください！！',
   isAvailable: true,
@@ -28,6 +30,12 @@ export const profile = {
       label: 'Gmail',
       description: emailAddress,
       action: { type: 'copy', value: emailAddress },
+    },
+    {
+      platform: 'github',
+      label: 'GitHub',
+      description: '@ankurugranpa',
+      action: { type: 'link', href: 'https://github.com/ankurugranpa' },
     },
     {
       platform: 'x',

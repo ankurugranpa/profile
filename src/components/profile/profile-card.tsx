@@ -1,6 +1,9 @@
+import { useState } from 'react'
+
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
 import { SocialLink } from '@/components/profile/social-link'
 import { ProfileAvatar } from '@/components/profile/profile-avatar'
+import { cn } from '@/lib/utils'
 import type { Profile } from '@/types/profile'
 
 type ProfileCardProps = {
@@ -8,6 +11,8 @@ type ProfileCardProps = {
 }
 
 export function ProfileCard({ profile }: ProfileCardProps) {
+  const [isFlipped, setIsFlipped] = useState(false)
+
   return (
     <Card
       aria-labelledby="profile-name"
@@ -21,15 +26,39 @@ export function ProfileCard({ profile }: ProfileCardProps) {
 
         <ProfileAvatar
           name={profile.name}
+          penName={profile.penName}
           initials={profile.initials}
           imageUrl={profile.imageUrl}
+          alternateImageUrl={profile.alternateImageUrl}
           isAvailable={profile.isAvailable}
+          isFlipped={isFlipped}
+          onFlip={() => setIsFlipped((current) => !current)}
         />
 
-        <h1 id="profile-name" className="text-[2.5rem] font-bold leading-tight tracking-[-0.04em] sm:text-[2.75rem]">
-          {profile.name}
-        </h1>
-        <p className="mb-7 mt-2.5 text-sm leading-7 text-stone-500">
+        <div className="relative h-24 w-full" aria-live="polite">
+          <h1
+            id="profile-name"
+            className={cn(
+              'absolute left-0 top-0 w-full origin-center whitespace-nowrap text-center font-bold leading-tight tracking-normal transition-[transform,font-size] duration-700 ease-[cubic-bezier(.2,.8,.2,1)] motion-reduce:transition-none',
+              isFlipped
+                ? 'text-2xl [transform:translateY(3.75rem)] sm:text-[1.625rem]'
+                : 'text-[2.5rem] [transform:translateY(0)] sm:text-[2.75rem]',
+            )}
+          >
+            {profile.name}
+          </h1>
+          <p
+            className={cn(
+              'absolute left-0 top-0 w-full origin-center whitespace-nowrap text-center font-bold leading-tight text-emerald-700 transition-[transform,font-size] duration-700 ease-[cubic-bezier(.2,.8,.2,1)] motion-reduce:transition-none',
+              isFlipped
+                ? 'text-[2.5rem] [transform:translateY(0)] sm:text-[2.75rem]'
+                : 'text-2xl [transform:translateY(3.75rem)] sm:text-[1.625rem]',
+            )}
+          >
+            {profile.penName}
+          </p>
+        </div>
+        <p className="mb-7 mt-3 text-sm leading-7 text-stone-500">
           {profile.greeting}
           <br />
           {profile.description}
